@@ -1,6 +1,6 @@
 {
     "name": "infobot/apiv2",
-    "description": "SDK \u0000\u0000\u0000 \u0000\u0000\u0000\u0000\u0000\u0000 API",
+    "description": "Infobot API",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -9,5 +9,12 @@
             "email": "demonxaoca@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "php" : ">=7.0"
+    },
+    "autoload": {
+            "psr-4": {
+                "Infobot\\Api\\" : "src/"
+            }
+    }
 }
