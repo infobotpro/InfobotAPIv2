@@ -1,0 +1,13 @@
+{
+    "name": "infobot/apiv2",
+    "description": "SDK \u0000\u0000\u0000 \u0000\u0000\u0000\u0000\u0000\u0000 API",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dmitry Kuznetsov",
+            "email": "demonxaoca@gmail.com"
+        }
+    ],
+    "require": {}
+}
