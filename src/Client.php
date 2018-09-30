@@ -29,6 +29,7 @@ namespace Infobot\Api;
  *                                              ":to" => гггг-мм-дд,
  *                                              ":campaign_id" => 10
  *                                             ]
+ *                              ]
  * @method string getTrunks(array $params)
  *                  $params => ["getParams" => ["activate"]]
  *                  $params => ["getParams" => [":id" => 1]]
