@@ -14,6 +14,7 @@ $client = new \Infobot\Api\Client($token);
 #####Отправка вызова
 
 Тип вызова: static
+
 ```PHP
 $message = new \Infobot\Api\Messages\StaticMessage([
    "to" => "79876543210",
@@ -28,6 +29,7 @@ $response = $client->postMessages($params)
 ```
 
 Тип вызова: dynamic
+
 ```PHP
 $message = new \Infobot\Api\Messages\DynamicMessage([
    "to" => "79876543210",
@@ -40,6 +42,7 @@ $response = $client->postMessages($params)
 ```
 
 Тип вызова: audio
+
 ```PHP
 $message = new \Infobot\Api\Messages\AudioMessage([
    "to" => "79876543210",
@@ -62,7 +65,9 @@ $response = $client->getUsers();
 ```PHP
 $response = $client->getScenaries();
 ```
+
 По страницам
+
 ```PHP
 $response = $client->getScenaries([
     "getParams" => ["page" => 1]
@@ -86,7 +91,9 @@ $response = $client->getScenaries([
 ```
 
 #####Получение значения переменных из звонка
+
 по ID звонка
+
 ```PHP
 $response = $client->getStatisticsVariables([
     "getParams" => ["message" => 1]
@@ -94,6 +101,7 @@ $response = $client->getStatisticsVariables([
 ```
 
 по custom_id
+
 ```PHP
 $response = $client->getStatisticsVariables([
     "getParams" => ["user" => 1]
@@ -101,6 +109,7 @@ $response = $client->getStatisticsVariables([
 ```
 
 по номеру телефона
+
 ```PHP
 $response = $client->getStatisticsVariables([
     "getParams" => ["phone" => 79876543210]
@@ -108,6 +117,7 @@ $response = $client->getStatisticsVariables([
 ```
 
 по номеру телефона с пагинацией
+
 ```PHP
 $response = $client->getStatisticsVariables([
     "getParams" => [
@@ -122,7 +132,9 @@ $response = $client->getStatisticsVariables([
 ```PHP
 $response = $client->getMessages();
 ```
+
 С пагинацией
+
 ```PHP
 $response = $client->getMessages([
     "getParams" => ["page" => 1]
@@ -149,6 +161,7 @@ $response = $client->postCampaigns([
 ```
 
 Переименовать
+
 ```PHP
 $campaing = new Infobot\Api\Campaigns\BaseCampaigns("Рога и Копыта");
 $response = $client->patchCampaigns([
@@ -160,11 +173,13 @@ $response = $client->patchCampaigns([
 #####Получение информации о кампаниях
 
 получение списка кампаний пользователя
+
 ```PHP
 $response = $client->getCampaigns();
 ```
 
 получить информацию о кампании по id
+
 ```PHP
 $response = $client->getCampaigns([
     "getParams" => [":id" => 1]
