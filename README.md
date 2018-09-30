@@ -228,25 +228,25 @@ $response = $client->postTrunc([
 
 удаление транка
 
- ```PHP
- $response = $client->deleteTrunc([
-     "getParams" => [":id" => 1]
- ]);
- ```
+```PHP
+$response = $client->deleteTrunc([
+    "getParams" => [":id" => 1]
+]);
+```
  
- обновление транка
- 
-  ```PHP
-  $param = [
-      "channels" => "",
-      "host" => "",
-      "login" => "",
-      "password" => "",
-      "title" => "",
-  ]
-  $trunc = new \Infobot\Api\Truncs\BaseTrunc($param);
-  $response = $client->patchTrunc([
-      "getParams" => [":id" => 1],
-      "body" => $trunc->toArray(),
-  ]);
-  ```
+обновление транка
+
+```PHP
+$param = [
+    "channels" => "",
+    "host" => "",
+    "login" => "",
+    "password" => "",
+    "title" => "",
+];
+$trunc = new \Infobot\Api\Truncs\BaseTrunc($param);
+$response = $client->patchTrunc([
+    "getParams" => [":id" => 1],
+    "body" => $trunc->toArray(),
+]);
+```
