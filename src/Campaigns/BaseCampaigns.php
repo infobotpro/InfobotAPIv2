@@ -6,7 +6,7 @@ class BaseCampaigns {
 
     public function __construct($name)
     {
-        $this->name;
+        $this->name = $name;
     }
 
     public function toArray(){

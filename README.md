@@ -22,10 +22,9 @@ $message = new \Infobot\Api\Messages\StaticMessage([
    "tts_voice" => "",
    "tts_speed" => "",
 ]);
-$params = [
-    "body" => $message->toArray();
-]
-$response = $client->postMessages($params)
+$response = $client->postMessages([
+    "body" => $message->toArray(),
+]);
 ```
 
 Тип вызова: dynamic
@@ -35,10 +34,9 @@ $message = new \Infobot\Api\Messages\DynamicMessage([
    "to" => "79876543210",
    "scenary" => 10,
 ]);
-$params = [
-    "body" => $message->toArray();
-]
-$response = $client->postMessages($params)
+$response = $client->postMessages([
+    "body" => $message->toArray(),
+]);
 ```
 
 Тип вызова: audio
@@ -48,10 +46,9 @@ $message = new \Infobot\Api\Messages\AudioMessage([
    "to" => "79876543210",
    "audio" => "http://examle.site.com/audio.mp3",
 ]);
-$params = [
-    "body" => $message->toArray();
-]
-$response = $client->postMessages($params)
+$response = $client->postMessages([
+    "body" => $message->toArray()
+]);
 ```
 
 #####Получение информации о пользователе (аккаунте)
@@ -70,7 +67,7 @@ $response = $client->getScenaries();
 
 ```PHP
 $response = $client->getScenaries([
-    "getParams" => ["page" => 1]
+    "query" => ["page" => 1]
 ]);
 ```
 
@@ -78,15 +75,7 @@ $response = $client->getScenaries([
 
 ```PHP
 $response = $client->getScenaries([
-    "getParams" => [":id" => 1]
-]);
-```
-
-#####Получение значения переменных из звонка
-
-```PHP
-$response = $client->getScenaries([
-    "getParams" => [":id" => 1]
+    "query" => [":id" => 1]
 ]);
 ```
 
@@ -96,7 +85,7 @@ $response = $client->getScenaries([
 
 ```PHP
 $response = $client->getStatisticsVariables([
-    "getParams" => ["message" => 1]
+    "query" => ["message" => 1]
 ]);
 ```
 
@@ -104,7 +93,7 @@ $response = $client->getStatisticsVariables([
 
 ```PHP
 $response = $client->getStatisticsVariables([
-    "getParams" => ["user" => 1]
+    "query" => ["user" => 1]
 ]);
 ```
 
@@ -112,7 +101,7 @@ $response = $client->getStatisticsVariables([
 
 ```PHP
 $response = $client->getStatisticsVariables([
-    "getParams" => ["phone" => 79876543210]
+    "query" => ["phone" => 79876543210]
 ]);
 ```
 
@@ -120,7 +109,7 @@ $response = $client->getStatisticsVariables([
 
 ```PHP
 $response = $client->getStatisticsVariables([
-    "getParams" => [
+    "query" => [
         "phone" => 79876543210,
         "page" => 1,
     ]
@@ -137,7 +126,7 @@ $response = $client->getMessages();
 
 ```PHP
 $response = $client->getMessages([
-    "getParams" => ["page" => 1]
+    "query" => ["page" => 1]
 ]);
 ```
 
@@ -145,7 +134,7 @@ $response = $client->getMessages([
 
 ```PHP
 $response = $client->getMessages([
-    "getParams" => [":id" => 1]
+    "query" => [":id" => 1]
 ]);
 ```
 
@@ -156,17 +145,17 @@ $response = $client->getMessages([
 ```PHP
 $campaing = new Infobot\Api\Campaigns\BaseCampaigns("Рога и Копыта");
 $response = $client->postCampaigns([
-    "body" => $campaing->toArray();
+    "body" => $campaing->toArray(),
 ]);
 ```
 
 Переименовать
 
 ```PHP
-$campaing = new Infobot\Api\Campaigns\BaseCampaigns("Рога и Копыта");
+$campaing = new Infobot\Api\Campaigns\BaseCampaigns("Рога и Копыта 2.0");
 $response = $client->patchCampaigns([
-    "getParams" => [":id" => 1],
-    "body" => $campaing->toArray();
+    "query" => [":id" => 1],
+    "body" => $campaing->toArray(),
 ]);
 ```
 
@@ -182,7 +171,7 @@ $response = $client->getCampaigns();
 
 ```PHP
 $response = $client->getCampaigns([
-    "getParams" => [":id" => 1]
+    "query" => [":id" => 1]
 ]);
 ```
 
@@ -190,7 +179,7 @@ $response = $client->getCampaigns([
 
 ```PHP
 $response = $client->getStatisticsFinance([
-    "getParams" => [
+    "query" => [
         "overall",
         ":from" => гггг-мм-дд,
         ":to" => гггг-мм-дд,
@@ -203,7 +192,7 @@ $response = $client->getStatisticsFinance([
 
 ```PHP
 $response = $client->getTrunks([
-    "getParams" => [
+    "query" => [
         "activate"
     ]
 ]);
@@ -221,7 +210,7 @@ $response = $client->getTrunks();
 
 ```PHP
 $response = $client->getTrunks([
-    "getParams" => [":id" => 1]
+    "query" => [":id" => 1]
 ]);
 ```
 
@@ -237,7 +226,7 @@ $param = [
 ]
 $trunc = new \Infobot\Api\Truncs\BaseTrunc($param);
 $response = $client->postTrunc([
-    "body" => $trunc->toArray();
+    "body" => $trunc->toArray(),
 ]);
 ```
 
@@ -245,7 +234,7 @@ $response = $client->postTrunc([
 
 ```PHP
 $response = $client->deleteTrunc([
-    "getParams" => [":id" => 1]
+    "query" => [":id" => 1]
 ]);
 ```
  
@@ -261,7 +250,7 @@ $param = [
 ];
 $trunc = new \Infobot\Api\Truncs\BaseTrunc($param);
 $response = $client->patchTrunc([
-    "getParams" => [":id" => 1],
+    "query" => [":id" => 1],
     "body" => $trunc->toArray(),
 ]);
 ```

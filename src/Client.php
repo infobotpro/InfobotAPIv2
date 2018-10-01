@@ -4,39 +4,39 @@ namespace Infobot\Api;
 /**
  * Class Client
  * @package Infobot\Api
- * @method string getMessages(array $params)
- *                  $params => ["getParams" => ["page" => 1]]
- *                  $params => ["getParams" => [":id" => 1]]
+ * @method string getMessages(array $params = null)
+ *                  $params => ["query" => ["page" => 1]]
+ *                  $params => ["query" => [":id" => 1]]
  * @method string postMessages(array $params) $params => ["body" => []]
  * @method string getUsers()
- * @method string getScenaries(array $params)
- *                  $params => ["getParams" => ["page" => 1]]
- *                  $params => ["getParams" => [":id" => 1]]
+ * @method string getScenaries(array $params = null)
+ *                  $params => ["query" => ["page" => 1]]
+ *                  $params => ["query" => [":id" => 1]]
  * @method string getStatisticsVariables(array $params)
- *                  $params => ["getParams" => ["message" => 111]]
- *                  $params => ["getParams" => ["user" => 111]]
- *                  $params => ["getParams" => ["phone" => 111]]
- *                  $params => ["getParams" => ["phone" => 111,"page" => 2]]
- * @method string getCampaigns(array $params)
- *                  $params => ["body" => ["name" => "name of company"]]
+ *                  $params => ["query" => ["message" => 111]]
+ *                  $params => ["query" => ["user" => 111]]
+ *                  $params => ["query" => ["phone" => 111]]
+ *                  $params => ["query" => ["phone" => 111,"page" => 2]]
+ * @method string getCampaigns(array  $params = null)
+ *                  $params => ["query" => [":id" => 111]]
  * @method string postCampaigns(array $params)
- *                  $params => ["getParams" => [":id" => 111]]
+ *                  $params => ["query" => [":id" => 111]]
  * @method string patchCampaigns(array $params)
  *                  $params => ["body" => ["name" => "name of company"]]
  * @method string getStatisticsFinance(array $params)
- *                  $params => ["getParams" => [
+ *                  $params => ["query" => [
  *                                              "overall",":from" => гггг-мм-дд,
  *                                              ":to" => гггг-мм-дд,
  *                                              ":campaign_id" => 10
  *                                             ]
  *                              ]
  * @method string getTrunks(array $params)
- *                  $params => ["getParams" => ["activate"]]
- *                  $params => ["getParams" => [":id" => 1]]
+ *                  $params => ["query" => ["activate"]]
+ *                  $params => ["query" => [":id" => 1]]
  * @method string postTrunc(array $params)
  *                  $params => ["body" => ["channels"]]
  * @method string deleteTrunc(array  $params)
- *                  $params => ["getParams" => [":id" => 1]]
+ *                  $params => ["query" => [":id" => 1]]
  * @method string patchTrunc(array $params)
  *                  $params => ["body" => ["channels"]]
  */
@@ -69,18 +69,18 @@ class Client
         $main_url = implode("/",$func);
 
         $url = self::URL.self::URL_API_VERSION."/{$main_url}/{$this->token}";
-
+        $data = [];
         if(isset($arguments[0]))
         {
             $func_args = $arguments[0];
             if(is_array($func_args)){
-                if(isset($func_args['getParams']))
+                if(isset($func_args['query']))
                 {
-                    if(!is_array($func_args['getParams']))
+                    if(!is_array($func_args['query']))
                     {
-                        throw new \Exception("param [ getParams => [] ] must be array");
+                        throw new \Exception("param [ query => [] ] must be array");
                     }
-                    foreach($func_args['getParams'] as $key => $val)
+                    foreach($func_args['query'] as $key => $val)
                     {
                         if(is_integer($key) || preg_match("(^\:.*$)",$key))
                         {
@@ -100,6 +100,7 @@ class Client
                     {
                         throw new \Exception("param [ body => [] ] must be array");
                     }
+                    $data = $func_args['body'];
                 }
             }else{
                 throw new \Exception("first argument of function must be array");
@@ -111,7 +112,7 @@ class Client
             $url .= $additional_url;
         }
 
-        return $this->request($method,$url);
+        return $this->request($method,$url,$data);
     }
 
     private function request($method, $url, $data = []){
@@ -119,7 +120,6 @@ class Client
         $curl = curl_init();
         $data = json_encode($data);
 
-        echo "{$method} {$url} {$data}";
         curl_setopt($curl,CURLOPT_URL, $url);
         curl_setopt($curl,CURLOPT_HEADER, false);
         curl_setopt($curl,CURLOPT_USERAGENT,'infobot http client v2');
@@ -155,9 +155,9 @@ class Client
         if($httpCode == 200)
         {
             $this->response = $response;
-            return $response;
+            return $this->response;
         }
-        throw new \Exception("Http Error {$httpCode}",$httpCode);
+        throw new \Exception("Http Error {$httpCode} {$response}",$httpCode);
     }
 
 }

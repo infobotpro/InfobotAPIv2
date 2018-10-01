@@ -8,7 +8,7 @@ class DynamicMessage extends BaseMessage {
     public function __construct($params)
     {
         parent::__construct($params);
-        $this->type = BaseMessage::TYPE_STATIC;
+        $this->type = BaseMessage::TYPE_DYNAMIC;
     }
 
     public function required()
