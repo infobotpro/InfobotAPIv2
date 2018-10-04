@@ -7,7 +7,10 @@ namespace Infobot\Api;
  * @method string getMessages(array $params = null)
  *                  $params => ["query" => ["page" => 1]]
  *                  $params => ["query" => [":id" => 1]]
- * @method string postMessages(array $params) $params => ["body" => []]
+ * @method string postMessages(array $params)
+ *                  $params => ["body" => []]
+ * @method string deleteMessages(array $params)
+ *                  $params => ["query" => [":id" => 1]]
  * @method string getUsers()
  * @method string getScenaries(array $params = null)
  *                  $params => ["query" => ["page" => 1]]
@@ -30,7 +33,7 @@ namespace Infobot\Api;
  *                                              ":campaign_id" => 10
  *                                             ]
  *                              ]
- * @method string getTrunks(array $params)
+ * @method string getTrunks(array $params = null)
  *                  $params => ["query" => ["activate"]]
  *                  $params => ["query" => [":id" => 1]]
  * @method string postTrunc(array $params)

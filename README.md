@@ -11,7 +11,7 @@ composer require infobot/apiv2
 ```PHP
 $client = new \Infobot\Api\Client($token);
 ```
-#####  Отправка вызова
+####  Отправка вызова
 
 Тип вызова: static
 
@@ -51,13 +51,13 @@ $response = $client->postMessages([
 ]);
 ```
 
-##### Получение информации о пользователе (аккаунте)
+#### Получение информации о пользователе (аккаунте)
 
 ```PHP
 $response = $client->getUsers();
 ```
 
-##### Получение списка сценариев
+#### Получение списка сценариев
 
 ```PHP
 $response = $client->getScenaries();
@@ -71,7 +71,7 @@ $response = $client->getScenaries([
 ]);
 ```
 
-##### Получение информации о сценарии
+#### Получение информации о сценарии
 
 ```PHP
 $response = $client->getScenaries([
@@ -79,7 +79,7 @@ $response = $client->getScenaries([
 ]);
 ```
 
-##### Получение значения переменных из звонка
+#### Получение значения переменных из звонка
 
 по ID звонка
 
@@ -116,7 +116,7 @@ $response = $client->getStatisticsVariables([
 ]);
 ```
 
-##### Получить статистику по звонкам
+#### Получить статистику по звонкам
 
 ```PHP
 $response = $client->getMessages();
@@ -138,7 +138,15 @@ $response = $client->getMessages([
 ]);
 ```
 
-##### Создание и редактирование кампаний
+#### Удаление (отмена) звонка из очереди
+
+```PHP
+$response = $client->deleteMessages([
+    "query" => [":id" => 1]
+]);
+```
+
+#### Создание и редактирование кампаний
 
 Создать
 
@@ -159,7 +167,7 @@ $response = $client->patchCampaigns([
 ]);
 ```
 
-##### Получение информации о кампаниях
+#### Получение информации о кампаниях
 
 получение списка кампаний пользователя
 
@@ -175,7 +183,7 @@ $response = $client->getCampaigns([
 ]);
 ```
 
-##### Получение финансовой статистики
+#### Получение финансовой статистики
 
 ```PHP
 $response = $client->getStatisticsFinance([
@@ -188,7 +196,7 @@ $response = $client->getStatisticsFinance([
 ]);
 ```
 
-##### Активация услуги "Своя Связь" (для возможности использования своей SIP-телефонии)
+#### Активация услуги "Своя Связь" (для возможности использования своей SIP-телефонии)
 
 ```PHP
 $response = $client->getTrunks([
@@ -198,7 +206,7 @@ $response = $client->getTrunks([
 ]);
 ```
 
-##### Создание и управление транками
+#### Создание и управление транками
 
 получение списка транков
 
@@ -223,7 +231,7 @@ $param = [
     "login" => "",
     "password" => "",
     "title" => "",
-]
+];
 $trunc = new \Infobot\Api\Truncs\BaseTrunc($param);
 $response = $client->postTrunc([
     "body" => $trunc->toArray(),
