@@ -33,14 +33,13 @@ namespace Infobot\Api;
  *                                              ":campaign_id" => 10
  *                                             ]
  *                              ]
+ * @method string postTrunks(array $params = null)
+ *                  $params => ["query" => ["activate"],"body" => []]
  * @method string getTrunks(array $params = null)
- *                  $params => ["query" => ["activate"]]
  *                  $params => ["query" => [":id" => 1]]
- * @method string postTrunc(array $params)
- *                  $params => ["body" => ["channels"]]
- * @method string deleteTrunc(array  $params)
+ * @method string deleteTrunks(array  $params)
  *                  $params => ["query" => [":id" => 1]]
- * @method string patchTrunc(array $params)
+ * @method string patchTrunks(array $params)
  *                  $params => ["body" => ["channels"]]
  */
 
@@ -119,7 +118,7 @@ class Client
     }
 
     private function request($method, $url, $data = []){
-
+        echo $method." ".$url." ".print_r($data,true);
         $curl = curl_init();
         $data = json_encode($data);
 

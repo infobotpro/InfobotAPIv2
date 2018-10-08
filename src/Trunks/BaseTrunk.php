@@ -1,7 +1,7 @@
 <?php
-namespace Infobot\Api\Truncs;
+namespace Infobot\Api\Trunks;
 
-class BaseTrunc {
+class BaseTrunk {
     public $channels;
     public $host;
     public $login;

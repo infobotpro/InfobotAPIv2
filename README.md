@@ -199,10 +199,11 @@ $response = $client->getStatisticsFinance([
 #### Активация услуги "Своя Связь" (для возможности использования своей SIP-телефонии)
 
 ```PHP
-$response = $client->getTrunks([
+$response = $client->postTrunks([
     "query" => [
         "activate"
-    ]
+    ],
+    "body" => [],
 ]);
 ```
 
@@ -226,22 +227,22 @@ $response = $client->getTrunks([
 
 ```PHP
 $param = [
-    "channels" => "",
-    "host" => "",
-    "login" => "",
-    "password" => "",
-    "title" => "",
+    "channels" => "10",
+    "host" => "test.unknowntrunk.net",
+    "login" => "admin",
+    "password" => "qwerty",
+    "title" => "Тестовый транк",
 ];
-$trunc = new \Infobot\Api\Truncs\BaseTrunc($param);
-$response = $client->postTrunc([
-    "body" => $trunc->toArray(),
+$trunk = new \Infobot\Api\Trunks\BaseTrunk($param);
+$response = $client->postTrunks([
+    "body" => $trunk->toArray(),
 ]);
 ```
 
 удаление транка
 
 ```PHP
-$response = $client->deleteTrunc([
+$response = $client->deleteTrunks([
     "query" => [":id" => 1]
 ]);
 ```
@@ -250,15 +251,15 @@ $response = $client->deleteTrunc([
 
 ```PHP
 $param = [
-    "channels" => "",
-    "host" => "",
-    "login" => "",
-    "password" => "",
-    "title" => "",
+    "channels" => "10",
+    "host" => "test.unknowntrunk.net",
+    "login" => "admin",
+    "password" => "qwerty",
+    "title" => "Тестовый транк",
 ];
-$trunc = new \Infobot\Api\Truncs\BaseTrunc($param);
-$response = $client->patchTrunc([
+$trunk = new \Infobot\Api\Trunks\BaseTrunk($param);
+$response = $client->patchTrunks([
     "query" => [":id" => 1],
-    "body" => $trunc->toArray(),
+    "body" => $trunk->toArray(),
 ]);
 ```
