@@ -118,7 +118,7 @@ class Client
     }
 
     private function request($method, $url, $data = []){
-        echo $method." ".$url." ".print_r($data,true);
+
         $curl = curl_init();
         $data = json_encode($data);
 
