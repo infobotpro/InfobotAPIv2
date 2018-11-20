@@ -5,42 +5,29 @@ namespace Infobot\Api;
  * Class Client
  * @package Infobot\Api
  * @method string getMessages(array $params = null)
- *                  $params => ["query" => ["page" => 1]]
- *                  $params => ["query" => [":id" => 1]]
  * @method string postMessages(array $params)
- *                  $params => ["body" => []]
  * @method string deleteMessages(array $params)
- *                  $params => ["query" => [":id" => 1]]
  * @method string getUsers()
  * @method string getScenaries(array $params = null)
- *                  $params => ["query" => ["page" => 1]]
- *                  $params => ["query" => [":id" => 1]]
  * @method string getStatisticsVariables(array $params)
- *                  $params => ["query" => ["message" => 111]]
- *                  $params => ["query" => ["user" => 111]]
- *                  $params => ["query" => ["phone" => 111]]
- *                  $params => ["query" => ["phone" => 111,"page" => 2]]
  * @method string getCampaigns(array  $params = null)
- *                  $params => ["query" => [":id" => 111]]
  * @method string postCampaigns(array $params)
- *                  $params => ["query" => [":id" => 111]]
  * @method string patchCampaigns(array $params)
- *                  $params => ["body" => ["name" => "name of company"]]
  * @method string getStatisticsFinance(array $params)
- *                  $params => ["query" => [
- *                                              "overall",":from" => гггг-мм-дд,
- *                                              ":to" => гггг-мм-дд,
- *                                              ":campaign_id" => 10
- *                                             ]
- *                              ]
  * @method string postTrunks(array $params = null)
- *                  $params => ["query" => ["activate"],"body" => []]
  * @method string getTrunks(array $params = null)
- *                  $params => ["query" => [":id" => 1]]
  * @method string deleteTrunks(array  $params)
- *                  $params => ["query" => [":id" => 1]]
  * @method string patchTrunks(array $params)
- *                  $params => ["body" => ["channels"]]
+ * @method string getDeliveries(array $params = null)
+ * @method string postDeliveries(array $params)
+ * @method string patchDeliveries(array $params)
+ * @method string getGroups(array $params = null)
+ * @method string postGroups(array $params)
+ * @method string patchGroups(array $params)
+ * @method string getContacts(array $params = null)
+ * @method string postContacts(array $params)
+ * @method string patchContacts(array $params)
+ *
  */
 
 class Client

@@ -263,3 +263,255 @@ $response = $client->patchTrunks([
     "body" => $trunk->toArray(),
 ]);
 ```
+
+### Управление рассылками
+
+Список рассылок
+
+```PHP
+$response = $client->getDeliveries();
+```
+
+По страницам
+
+```PHP
+$response = $client->getDeliveries([
+    "query" => ["page" => 1]
+]);
+```
+
+Информация по рассылке
+
+```PHP
+$response = $client->getDeliveries([
+    "query" => [":id" => 1]
+]);
+```
+
+Запустить рассылку
+
+```PHP
+$response = $client->postDeliveries([
+    "query" => [":id" => 1],
+    "body" => [],
+]);
+```
+
+Приостановить рассылку
+
+```PHP
+$response = $client->postDeliveries([
+    "query" => [":id" => 1],
+    "body" => [],
+]);
+```
+
+Создать рассылку
+
+```PHP
+$params = [
+    "aon" => 79876543210,
+    "campaign_id" => 1,
+    "client_timezone" => true,
+    "d_type" => static,
+    "detect_voicemail" => false,
+    "group_id" => 1,
+    "message" => "static text",
+    "messages_per_packet" => 2,
+    "name" => "Моя рассылка",
+    "pause_between_packet" => 10,
+    "scenary_id" => '',
+    "speed" => 10,
+    "time_to_send_start" => "10:00",
+    "time_to_send_end" => "20:00",
+    "trunk" => 12,
+    "try_count" => 2,
+    "try_timeout" => 10,
+    "tts_speed" => 10,
+    "voice" => "male",
+    "file" => ''
+];
+
+$response = $client->postDeliveries([
+    "body" => $params,
+]);
+```
+
+Изменить рассылку
+
+```PHP
+$params = [
+    "aon" => 79876543210,
+    "campaign_id" => 1,
+    "client_timezone" => true,
+    "d_type" => static,
+    "detect_voicemail" => false,
+    "group_id" => 1,
+    "message" => "static text",
+    "messages_per_packet" => 2,
+    "name" => "Моя рассылка",
+    "pause_between_packet" => 10,
+    "scenary_id" => '',
+    "speed" => 10,
+    "time_to_send_start" => "10:00",
+    "time_to_send_end" => "20:00",
+    "trunk" => 12,
+    "try_count" => 2,
+    "try_timeout" => 10,
+    "tts_speed" => 10,
+    "voice" => "male",
+    "file" => ''
+];
+
+$response = $client->patchDeliveries([
+    "query" => [":id" => 1],
+    "body" => $params,
+]);
+```
+
+
+### Управление группами
+
+
+Список групп
+
+```PHP
+$response = $client->getGroups();
+```
+
+По страницам
+
+```PHP
+$response = $client->getGroups([
+    "query" => ["page" => 1]
+]);
+```
+
+Информация по группе
+
+```PHP
+$response = $client->getGroups([
+    "query" => [":id" => 1]
+]);
+```
+
+Создать группу
+```PHP
+$params = [
+    "name" => "Имя группы"
+];
+
+$response = $client->postGroups([
+    "body" => $params,
+]);
+```
+
+
+Обновить группу
+
+```PHP
+$params = [
+    "name" => "Имя группы"
+];
+
+$response = $client->patchGroups([
+    "query" => [":id" => 1],
+    "body" => $params,
+]);
+```
+
+### Управление контактами
+
+
+Список контактов
+
+```PHP
+$response = $client->getContacts();
+```
+
+По страницам
+
+```PHP
+$response = $client->getContacts([
+    "query" => ["page" => 1]
+]);
+```
+
+Информация по контакту
+
+```PHP
+$response = $client->getContacts([
+    "query" => [":id" => 1]
+]);
+```
+
+Список контактов по группе
+
+```PHP
+$response = $client->getContacts([
+    "query" => [
+        "group",
+        ":group_id" => 1
+    ]
+]);
+```
+
+По страницам
+
+```PHP
+$response = $client->getContacts([
+    "query" => [
+        "group",
+        ":group_id" => 1,
+        "page" => 1
+    ]
+]);
+```
+
+
+Создать контакт
+```PHP
+$params = [
+    "sex" => "male",
+    "group_ids" => [1,2,3],
+    "email" => "email@email.email",
+    "fname" => "Фамилия",
+    "lname" => "Имя",
+    "mname" => "Отчество",
+    "phone" => "79876543210",
+    "var_1" => "var",
+    "var_2" => "var",
+    "var_3" => "var",
+    "var_4" => "var",
+    "var_5" => "var",
+];
+
+$response = $client->postContacts([
+    "body" => $params,
+]);
+```
+
+
+Обновить контакт
+
+```PHP
+$params = [
+    "sex" => "male",
+    "group_ids" => [1,3],
+    "email" => "email@email.email",
+    "fname" => "Фамилия",
+    "lname" => "Имя",
+    "mname" => "Отчество",
+    "phone" => "79876543210",
+    "var_1" => "var",
+    "var_2" => "var",
+    "var_3" => "var",
+    "var_4" => "var",
+    "var_5" => "var",
+];
+
+$response = $client->patchContacts([
+    "query" => [":id" => 1],
+    "body" => $params,
+]);
+```
